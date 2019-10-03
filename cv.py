@@ -1,10 +1,12 @@
+# -*- coding: utf-8 -*-
+
 from target import TargetType
 import cv2
 
 
 class UIMatcher:
     @staticmethod
-    def match(screen, target: TargetType):
+    def match(screen, target):
         """
         在指定快照中确定货物的屏幕位置。
         """
@@ -29,7 +31,7 @@ class UIMatcher:
         return tl[0] + tw / 2 + 15, tl[1] + th / 2 + 15
 
     @staticmethod
-    def read(filepath: str):
+    def read(filepath):
         """
         工具函数，用于读取图片。
         """

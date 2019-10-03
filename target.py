@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from enum import Enum
 
 
@@ -24,4 +26,12 @@ class TargetType(Enum):
     Tool = 'targets/Tool.jpg'
     Microphone = 'targets/Microphone.jpg'
     Oil = 'targets/Oil.jpg'
-    
+    Cotton = 'targets/Cotton.jpg'
+    chenshan = 'targets/chenshan.jpg'
+    xiangzi = 'targets/xiangzi.jpg'
+    tanzi = 'targets/tanzi.jpg'
+    Coal = 'targets/Coal.jpg'
+    Computer = 'targets/Computer.jpg'
+    Honor = 'targets/Honor.jpg'
+    Screw = 'targets/Screw.jpg'
+    Tree = 'targets/Tree.jpg'

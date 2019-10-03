@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from target import TargetType
 from cv import UIMatcher
 import uiautomator2 as u2
@@ -12,7 +14,7 @@ def TIME():
 
 
 class Automator:
-    def __init__(self, device: str, targets: dict):
+    def __init__(self, device, targets):
         """
         device: 如果是 USB 连接，则为 adb devices 的返回结果；如果是模拟器，则为模拟器的控制 URL 。
         """
@@ -31,6 +33,7 @@ class Automator:
         """
         while True:
             try:
+                time.sleep(30)
                 # 由于此处鲁棒性在我本地测试不怎么好，所以个人推荐关闭 trainMode （一家之言）。 
                 if self.trainMode:
                     self.d.app_start("com.tencent.jgm")
@@ -53,9 +56,9 @@ class Automator:
                     self.count = self.count + 1
                     if self.isHarvest:
                         self.harvestCount = self.harvestCount + 1
-                        print(f"{TIME()} 收获！{self.harvestCount}/{self.count}")
+                        print(" {TIME()} 收获！ {self.harvestCount}/{self.count} ")
                     else:
-                        print(f"{TIME()} 未收获……{self.harvestCount}/{self.count}")
+                        print("{TIME()} 未收获…… {self.harvestCount}/{self.count}")
                     self.d.app_stop("com.tencent.jgm")
                     time.sleep(2)
             except Exception as e:
@@ -101,13 +104,13 @@ class Automator:
         }
         return positions.get(key)
 
-    def _get_target_position(self, target: TargetType):
+    def _get_target_position(self, target):
         """
         获取货物要移动到的屏幕位置。
         """
         return self._get_position(self.targets.get(target))
 
-    def _match_target(self, target: TargetType):
+    def _match_target(self, target):
         """
         探测货物，并搬运货物。
         """
