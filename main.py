@@ -29,23 +29,23 @@ if __name__ == '__main__':
     }
 
     goodInstMap = {
-        TargetType.Shoes: 'shangmao',
+        # TargetType.Shoes: 'shangmao',
         # TargetType.Bag:  '',
         # TargetType.Book:  '',
         # TargetType.Bottle:  '',
         # TargetType.Box:  '',
         # TargetType.Chair:  '',
-        # TargetType.Chicken:  '',
-        # TargetType.Coal:  '',
-        # TargetType.Computer:  '',
-        TargetType.Cotton: 'fangzhichang',
-        TargetType.Dogfood: 'huayuanyangfang',
-        TargetType.Food:  'shipinchang',
+        TargetType.Chicken:  'minshizhai',
+        # TargetType.Coal:  'dianchang',
+        # TargetType.Computer:  'rencaigongyu',
+        # TargetType.Cotton: 'fangzhichang',
+        # TargetType.Dogfood: 'huayuanyangfang',
+        # TargetType.Food:  'shipinchang',
         # TargetType.Grass:  '',
         # TargetType.Honor:  '',
         # TargetType.Iron:  '',
         TargetType.Microphone: 'meiti',
-        # TargetType.Oil:  '',
+        TargetType.Oil:  'renminshiyou',
         # TargetType.Plant:  '',
         # TargetType.Quilt:  '',
         # TargetType.Screw:  '',
@@ -54,24 +54,25 @@ if __name__ == '__main__':
         # TargetType.Tree:  '',
         # TargetType.Vegetable:  '',
         # TargetType.Wood: '', 
-        TargetType.chenshan: 'fuzhuang',
-        TargetType.xiangzi: 'xiaoxinggongyu',
+        # TargetType.chenshan: 'fuzhuang',
+        # TargetType.xiangzi: 'xiaoxinggongyu',
         TargetType.tanzi: 'fuxinggongguan'
     }
 
     location2shop = {
-        'xiaoxinggongyu': 1,
-        'huayuanyangfang': 2,
+        'xiaoxinggongyu': 2,
+        'rencaigongyu': 3,
         'fuxinggongguan': 3,
-        'fuzhuang': 4,
         'shangmao': 5,
+        'minshizhai': 5,
         'meiti': 6,
-        'fangzhichang': 7,
-        'shipinchang': 8,
+        'dianchang': 8,
+        'renminshiyou': 8,
         'qiejixie': 9,
-        '': 1
+        '': 9
     }
 
+   
     for key in goodInstMap:
         targets[key] = location2shop[goodInstMap[key]]
 
@@ -80,5 +81,11 @@ if __name__ == '__main__':
     # 连接 adb ，MuMu 模拟器默认 adb 控制链接为 127.0.0.1:7555 。
     instance = Automator('127.0.0.1:7555', targets)
 
+
     # 启动脚本。
-    instance.start()
+    # instance.start()
+    # instance.collect_red_pack(0)
+    instance.collect_photo(100)
+    onlineLayout = ['中式小楼', '人才公寓', '空中别墅',
+                    '服装店',   '图书城',   '学校',
+                    '纺织厂',    '造纸厂',  '电厂']

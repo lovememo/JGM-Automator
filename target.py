@@ -35,3 +35,4 @@ class TargetType(Enum):
     Honor = 'targets/Honor.jpg'
     Screw = 'targets/Screw.jpg'
     Tree = 'targets/Tree.jpg'
+    empty_train = 'targets/empty_train2.jpg'
