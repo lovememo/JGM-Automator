@@ -36,6 +36,7 @@ class Automator:
                 self._swipe()
                 time.sleep(2)
                 self._upgrade_arr(arr, 3)
+                time.sleep(60)
             except Exception as e:
                 print(e)
     def start(self):
