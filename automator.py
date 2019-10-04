@@ -26,7 +26,18 @@ class Automator:
         # 由于启动需等待 40s ，所以默认是不开启 trainMode 的。
         self.trainMode = True
         self.harvestCount = 0
-
+    def online_upgrade(self, arr):
+        self.d.app_start("com.tencent.jgm")
+        time.sleep(10)
+        self.d.click(1, 1919)
+        time.sleep(2)
+        while True:
+            try:
+                self._swipe()
+                time.sleep(2)
+                self._upgrade_arr(arr, 3)
+            except Exception as e:
+                print(e)
     def start(self):
         """
         启动脚本，请确保已进入游戏页面。
@@ -105,12 +116,29 @@ class Automator:
         升级指定建筑。
         """
         self.d.click(1000, 1100)
+        time.sleep(2)
         sx, sy = self._get_position(id)
         self.d.click(sx, sy)
         time.sleep(2)
         for i in range(count):
             self.d.click(875, 1750)
             # time.sleep(0.)
+        time.sleep(2)
+        self.d.click(1000, 1100)
+        time.sleep(2)
+
+    def _upgrade_arr(self, arr, count):
+        """
+        升级指定建筑。
+        """
+        self.d.click(1000, 1100)
+        time.sleep(2)
+        for id in arr:
+            sx, sy = self._get_position(id)
+            self.d.click(sx, sy)
+            time.sleep(2)
+            for i in range(count):
+                self.d.click(875, 1750)
         time.sleep(2)
         self.d.click(1000, 1100)
         time.sleep(2)

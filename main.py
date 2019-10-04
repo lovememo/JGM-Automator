@@ -81,11 +81,12 @@ if __name__ == '__main__':
     # 连接 adb ，MuMu 模拟器默认 adb 控制链接为 127.0.0.1:7555 。
     instance = Automator('127.0.0.1:7555', targets)
 
-
-    # 启动脚本。
-    # instance.start()
-    # instance.collect_red_pack(0)
-    instance.collect_photo(100)
+    upgrade_arr = [3, 5, 6]
     onlineLayout = ['中式小楼', '人才公寓', '空中别墅',
                     '服装店',   '图书城',   '学校',
                     '纺织厂',    '造纸厂',  '电厂']
+    # 启动脚本。
+    # instance.start()
+    # instance.collect_red_pack(0)
+    # instance.collect_photo(100)
+    instance.online_upgrade(upgrade_arr)
