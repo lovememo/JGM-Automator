@@ -139,6 +139,7 @@ class Automator:
             time.sleep(2)
             for i in range(count):
                 self.d.click(875, 1750)
+            time.sleep(1)
         time.sleep(2)
         self.d.click(1000, 1100)
         time.sleep(2)

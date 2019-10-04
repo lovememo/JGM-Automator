@@ -86,7 +86,7 @@ if __name__ == '__main__':
                     '服装店',   '图书城',   '学校',
                     '纺织厂',    '造纸厂',  '电厂']
     # 启动脚本。
-    # instance.start()
+    # instance.start(upgrade_arr)
     # instance.collect_red_pack(0)
     # instance.collect_photo(100)
     instance.online_upgrade(upgrade_arr)
