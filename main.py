@@ -84,7 +84,7 @@ if __name__ == '__main__':
     # upgrade_arr = [3, 5, 6]
     upgrade_arr = [1,2,3,4,5,6,7,8,9]
     # upgrade_arr = [5]
-    upgrade_arr = []
+    # upgrade_arr = []
     onlineLayout = ['中式小楼', '人才公寓', '空中别墅',
                     '图书城',   '学校',     '五金店',   
                      '造纸厂',  '零件厂',   '电厂']
