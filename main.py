@@ -83,7 +83,8 @@ if __name__ == '__main__':
 
     # upgrade_arr = [3, 5, 6]
     # upgrade_arr = [1,2,3,4,5,6,7,8,9]
-    upgrade_arr = [5]
+    # upgrade_arr = [5]
+    upgrade_arr = []
     onlineLayout = ['中式小楼', '人才公寓', '空中别墅',
                     '服装店',   '图书城',   '学校',
                     '纺织厂',    '造纸厂',  '电厂']
@@ -93,8 +94,9 @@ if __name__ == '__main__':
     #火车脚本
     # instance.start()
     #红包收集 0-小红包 1-中红包 2-大红包
-    # instance.collect_red_pack(0)
+    instance.collect_red_pack(0)
     #相册收集
     # instance.collect_photo(100)
     #在线挂机升级建筑
-    instance.online_upgrade(upgrade_arr)
+    # instance.online_upgrade(upgrade_arr)
+    # instance.just_online()

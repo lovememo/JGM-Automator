@@ -26,17 +26,47 @@ class Automator:
         # 由于启动需等待 40s ，所以默认是不开启 trainMode 的。
         self.trainMode = True
         self.harvestCount = 0
+
+    def just_online(self):
+        interval = 120
+        while True:
+            self.d.click(1, 1919)
+            time.sleep(interval)
+            self.d.click(490, 1825)
+            time.sleep(interval)
+
     def online_upgrade(self, arr):
         self.d.app_start("com.tencent.jgm")
         time.sleep(10)
         self.d.click(1, 1919)
         time.sleep(2)
+        # 1: (294, 1184),
+        # 2: (551, 1061),
+        # 3: (807, 961),
+        # 4: (275, 935),
+        # 5: (535, 810),
+        # 6: (799, 687),
+        # 7: (304, 681),
+        # 8: (541, 568),
+        # 9: (787, 447)
         while True:
             try:
-                self._swipe()
+                for i in range(60):
+                    time.sleep(1)
+                    self.d.click(807, 961)
+                    if i%5 == 0:
+                        self.d.click(294, 1184)
+                        self.d.click(551, 1061)
+                        self.d.click(275, 935)
+                        self.d.click(535, 810)
+                        self.d.click(799, 687)
+                        self.d.click(304, 681)
+                        self.d.click(541, 568)
+                        self.d.click(787, 447)
+                # self._swipe()
                 time.sleep(2)
                 self._upgrade_arr(arr, 3)
-                time.sleep(60)
+                # time.sleep(60)
             except Exception as e:
                 print(e)
     def start(self):
@@ -49,18 +79,46 @@ class Automator:
                 if self.trainMode:
                     self.d.app_start("com.tencent.jgm")
                     self.isHarvest = False
-                    time.sleep(40)
+                    for i in range(33):
+                        time.sleep(1)
+                        if i%5 == 0:
+                            self.d.click(275, 935)
+                            self.d.click(551, 1061)
+                            self.d.click(535, 810)
+                        if i%11 == 0:
+                            self.d.click(294, 1184)
+                            self.d.click(807, 961)
+                            self.d.click(799, 687)
+                            self.d.click(304, 681)
+                            self.d.click(541, 568)
+                            self.d.click(787, 447)
                     self.d.click(1, 1919)
 
+                self.d.click(1,1)
+                time.sleep(1)
                 # 获取当前屏幕快照
                 screen = self.d.screenshot(format="opencv")
-                if self._is_empty_train(screen) and self.trainMode != True:
-                    print('train not found , swip and continue')
-                    self._swipe()
-                    time.sleep(12)
+                is_empty = self._is_empty_train(screen)
+                if is_empty and self.trainMode != True:
+                    print(TIME(), 'train not found , swip and continue')
+                    # self._swipe()
+                    # time.sleep(12)
+                    for i in range(12):
+                        time.sleep(1)
+                        if i%5 == 0:
+                            self.d.click(275, 935)
+                            self.d.click(551, 1061)
+                            self.d.click(535, 810)
+                        if i%11 == 0:
+                            self.d.click(294, 1184)
+                            self.d.click(807, 961)
+                            self.d.click(799, 687)
+                            self.d.click(304, 681)
+                            self.d.click(541, 568)
+                            self.d.click(787, 447)
                     continue
 
-                if self._is_empty_train(screen) and self.trainMode:
+                if is_empty and self.trainMode:
                     self.d.app_stop("com.tencent.jgm")
                     time.sleep(2)
                     continue
@@ -82,10 +140,10 @@ class Automator:
                 self._swipe()
                 
                 # 取消注释下一行，即可实现对特定建筑的升级
-                self._upgrade(5, 10)
-                time.sleep(1)
-                self._upgrade(8, 10)
-                time.sleep(1)
+                # self._upgrade(5, 10)
+                # time.sleep(1)
+                # self._upgrade(8, 10)
+                # time.sleep(1)
 
                 # 开启 trainMode 后，会输出当前货物的搬运成果，随后关闭应用。
                 if self.trainMode:
