@@ -61,12 +61,12 @@ if __name__ == '__main__':
 
     location2shop = {
         'xiaoxinggongyu': 2,
-        'rencaigongyu': 3,
+        'huayuanyangfang': 3,
         'fuxinggongguan': 3,
         'shangmao': 5,
         'minshizhai': 5,
         'meiti': 6,
-        'dianchang': 8,
+        'linjianchang': 8,
         'renminshiyou': 8,
         'qiejixie': 9,
         '': 9
@@ -82,21 +82,22 @@ if __name__ == '__main__':
     instance = Automator('127.0.0.1:7555', targets)
 
     # upgrade_arr = [3, 5, 6]
-    upgrade_arr = [1,2,3,4,5,6,7,8,9]
+    # upgrade_arr = [1,2,3,4,5,6,7,8,9]
     # upgrade_arr = [5]
-    # upgrade_arr = []
+    # upgrade_arr = [8,5,1,2,3,4,6,7,9]
+    upgrade_arr = []
     onlineLayout = ['中式小楼', '人才公寓', '空中别墅',
-                    '图书城',   '学校',     '五金店',   
-                     '造纸厂',  '零件厂',   '电厂']
+                       '民食斋', '图书城',    '五金店',   
+                     '电厂',  '零件厂',   '企鹅机械']
     
     
     # 启动脚本。
     #火车脚本
-    # instance.start()
+    instance.start()
     #红包收集 0-小红包 1-中红包 2-大红包
-    # instance.collect_red_pack(0)
+    # instance.collect_red_pack(0, 300)
     #相册收集
-    # instance.collect_photo(100)
     #在线挂机升级建筑
-    instance.online_upgrade(upgrade_arr)
+    # instance.collect_photo(200)
+    # instance.online_upgrade(upgrade_arr)
     # instance.just_online()

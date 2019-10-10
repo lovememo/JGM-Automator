@@ -51,7 +51,10 @@ class Automator:
         # 9: (787, 447)
         while True:
             try:
-                for i in range(60):
+                self.d.swipe(1, 1, 2, 2)
+                time.sleep(2)
+                self.complete_city_task(0)
+                for i in range(180):
                     time.sleep(1)
                     self.d.click(807, 961)
                     if i%5 == 0:
@@ -69,6 +72,20 @@ class Automator:
                 # time.sleep(60)
             except Exception as e:
                 print(e)
+    def complete_city_task(self, i):
+        # complete task
+        time.sleep(2)
+        print(i, "start complete task")
+        print(i, "open task")
+        self.d.click(170, 1608)
+        time.sleep(2)
+        print(i, "complete task")
+        self.d.click(545, 1545)
+        time.sleep(2)
+        print(i, "quit task")
+        self.d.click(10,10)
+        time.sleep(2)
+
     def start(self):
         """
         启动脚本，请确保已进入游戏页面。
@@ -79,19 +96,20 @@ class Automator:
                 if self.trainMode:
                     self.d.app_start("com.tencent.jgm")
                     self.isHarvest = False
-                    for i in range(33):
+                    for i in range(28):
                         time.sleep(1)
                         if i%5 == 0:
                             self.d.click(275, 935)
                             self.d.click(551, 1061)
                             self.d.click(535, 810)
-                        if i%11 == 0:
+                        if (i+1)%19 == 0:
                             self.d.click(294, 1184)
                             self.d.click(807, 961)
                             self.d.click(799, 687)
                             self.d.click(304, 681)
                             self.d.click(541, 568)
                             self.d.click(787, 447)
+                            self.complete_city_task(i)
                     self.d.click(1, 1919)
 
                 self.d.click(1,1)
@@ -117,7 +135,7 @@ class Automator:
                             self.d.click(541, 568)
                             self.d.click(787, 447)
                     continue
-
+                print('is_empty_train', is_empty)
                 if is_empty and self.trainMode:
                     self.d.app_stop("com.tencent.jgm")
                     time.sleep(2)
@@ -228,10 +246,7 @@ class Automator:
         return self._get_position(self.targets.get(target))
 
     def _is_empty_train(self, screen):
-        print(TargetType.empty_train)
-        print("before empty train")
         result = UIMatcher.match(screen, TargetType.empty_train)
-        print("after empty train")
         if result is None:
             return False
         return True
@@ -267,13 +282,14 @@ class Automator:
         print("found!")
         return True
 
-    def collect_red_pack(self, scale):
+    def collect_red_pack(self, scale, count):
         self.d.app_start("com.tencent.jgm")
         self.d.click(1, 1919)
         time.sleep(2)
         self.d.click(490, 1825)
-        while True:
+        for i in range(count*3):
             time.sleep(0.5)
+            print(i)
             if 0 == scale:
                 self.d.click(205, 706)
                 time.sleep(0.5)
@@ -288,18 +304,21 @@ class Automator:
                 self.d.click(540, 355)
 
     def collect_photo(self, count):
-        self.d.app_start("com.tencent.jgm")
-        self.d.click(1, 1919)
-        time.sleep(2)
-        self.d.click(490, 1825)
+        # self.d.app_start("com.tencent.jgm")
+        # self.d.click(1, 1919)
+        # time.sleep(2)
+        # self.d.click(490, 1825)
         for i in range(count):
             self.d.click(547, 1407)
             time.sleep(3)
             self.d.click(540, 355)
-            time.sleep(1)
             print(i)
+            time.sleep(1)
 
-            if i % 10 == 0:
-                self.d.click(1, 1919)
-                time.sleep(3)
-                self.d.click(490, 1825)
+            # if i % 10 == 0:
+            #     self.d.click(1, 1919)
+            #     time.sleep(3)
+            #     self.d.click(490, 1825)
+        time.sleep(2)
+        self.d.click(1, 1919)
+        time.sleep(2)
